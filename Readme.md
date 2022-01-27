@@ -5,7 +5,7 @@ The bot is currently live on telegram! It is called @sf_cc_bot - check it out!
 
 
 
-# Telegram Currency converter
+# Telegram Digital & Physical Currency Converter
 
 Telegram Bot using RapidAPI Alpha Vantage to get real time currency exchange rates (digital and physical).
 
