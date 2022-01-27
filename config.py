@@ -1,4 +1,4 @@
-from keys.py import *
+from keys import *
 
 API_KEY =  telegramAPI_key
 
