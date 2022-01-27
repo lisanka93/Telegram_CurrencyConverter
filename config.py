@@ -1,11 +1,14 @@
+from keys.py import *
 
-API_KEY = "" #insert your API key
+API_KEY =  telegramAPI_key
 
 #rapidAPI
 headers = {
         'x-rapidapi-host': "alpha-vantage.p.rapidapi.com",
         'x-rapidapi-key': ""
         }
+
+headers['x-rapidapi-key'] = rapidAPI_key
 
 CONTENT_TYPES = [ "audio", "document", "photo", "stricker", "video", "video_note", "voice", "location", "contact"]
 
