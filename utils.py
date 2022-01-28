@@ -28,20 +28,29 @@ class CurrencyException(Exception):
 class CurrencyConverter:
 
     @staticmethod
-    def convert(message):
+    def convert(message, cid):
 
         bug = False   #api has bug so need to fix it manually
 
         tokens = message.split()
         if len(tokens) != 3:
-            raise CurrencyException("invalid input, please provide 2 currencies and the amount you want to convert")
+            if cid == "rus":
+                raise CurrencyException("Неверный ввод, пожалуйста, укажите 2 валюты и сумму, которую вы хотите конвертировать")
+            else:
+                raise CurrencyException("Invalid input, please provide 2 currencies and the amount you want to convert")
 
         if tokens[0].upper() not in currency_list or tokens[1].upper() not in currency_list:
-            raise CurrencyException("sorry but we dont support these currencies")
+            if cid == "rus":
+                raise CurrencyException("Извините, но мы не поддерживаем эти валюты")
+            else:
+                raise CurrencyException("Sorry but we dont support these currencies")
         try:
             money_amount = float(tokens[2])
         except ValueError:
-            raise CurrencyException("please provide a valid money amount")
+            if cid == "rus":
+                raise CurrencyException("Пожалуйста, укажите действительную сумму денег")
+            else:
+                raise CurrencyException("Please provide a valid money amount")
 
         curr1 = tokens[0].upper()
         curr2 = tokens[1].upper()
@@ -50,6 +59,10 @@ class CurrencyConverter:
         """
         The API has a bug and doesnt convert physical to crypto
         """
+        if cid == "rus":
+            are = "это"
+        else:
+            are = "are"
 
         if curr1 in physical_currency_list and curr2 in digital_currency_list:
             temp = curr1
@@ -70,13 +83,13 @@ class CurrencyConverter:
             new_amount =  (1/float(rate)) *float(amount)   #reverse exchange rate
             new_amount = round(new_amount,5)
 
-            bot_response = f"{amount} {curr2} are {new_amount} {curr1}"
+            bot_response = f"{amount} {curr2} {are} {new_amount} {curr1}"
 
         else:
 
             new_amount =  float(rate)*float(amount)
             new_amount = round(new_amount,5)
 
-            bot_response = f"{amount} {curr1} are {new_amount} {curr2}"
+            bot_response = f"{amount} {curr1} {are} {new_amount} {curr2}"
 
         return bot_response
