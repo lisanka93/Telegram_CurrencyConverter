@@ -31,14 +31,14 @@ def callback_inline(call):
             cid = call.message.chat.id
             user_dict[cid] = "eng"
             bot.answer_callback_query(callback_query_id=call.id)
-            bot.send_message(call.message.chat.id, f"Hey {call.message.chat.username}!\nI am a currency converter bot. I support over 150 physical currencies and over 550 digital currencies. For a list of popular physical currencies type /pcurrencies and for a list of popular digital currencies type /dcurrencies. To convert a currency please write it in the following format: <from_currency code> <to_currency code> <money-value>. For example: USD RUB 100")
+            bot.send_message(call.message.chat.id, f"Hey {call.message.chat.username}!\nI am a currency converter bot. I support over 150 physical currencies and over 550 digital currencies. For a list of popular physical currencies type /pcurrencies and for a list of popular digital currencies type /dcurrencies. To convert a currency please write it in the following format: <from_currency code> <to_currency code> <money value>. For example: USD RUB 100")
 
     if call.message:
         if call.data == "rus":
             cid = call.message.chat.id
             user_dict[cid] = "rus"
             bot.answer_callback_query(callback_query_id=call.id)
-            bot.send_message(call.message.chat.id, text=f"Привет {call.message.chat.username}!\nЯ бот-конвертер валют. Я поддерживаю более 150 физических валют и более 550 цифровых валют. Для списка популярных физических валют введите /pcurrencies, а для списка популярных цифровых валют введите /dcurrencies. Чтобы конвертировать валюту, напишите ее в следующем формате: <от_код_валюты> <на_код_валюты> <денежное значение>. Например: USD RUB 100.")
+            bot.send_message(call.message.chat.id, text=f"Привет {call.message.chat.username}!\nЯ бот-конвертер валют. Я поддерживаю более 150 физических валют и более 550 цифровых валют. Для списка популярных физических валют введите /pcurrencies, а для списка популярных цифровых валют введите /dcurrencies. Чтобы конвертировать валюту, напишите ее в следующем формате: <из_код_валюты> <в_код_валюты> <денежное значение>. Например: USD RUB 100.")
 
 
 @bot.message_handler(commands=["help"])
@@ -46,9 +46,9 @@ def greet(message):
     cid = message.chat.id
     lang =user_dict[cid]
     if lang == "rus":
-        bot.send_message(message.chat.id, text=f"Для списка популярных физических валют введите /pcurrencies, а для списка популярных цифровых валют введите /dcurrencies. Чтобы конвертировать валюту, напишите ее в следующем формате: <от_код_валюты> <на_код_валюты> <денежное значение>. Например: USD RUB 100")
+        bot.send_message(message.chat.id, text=f"Для списка популярных физических валют введите /pcurrencies, а для списка популярных цифровых валют введите /dcurrencies. Чтобы конвертировать валюту, напишите ее в следующем формате: <из_код_валюты> <в_код_валюты> <денежное значение>. Например: USD RUB 100")
     else:
-        bot.send_message(message.chat.id, f"For a list of popular physical currencies type /pcurrencies and for a list of popular digital currencies type /dcurrencies. To convert a currency please write it in the following format: <from_currency code> <to_currency code> <money-value>. For example: USD RUB 100")
+        bot.send_message(message.chat.id, f"For a list of popular physical currencies type /pcurrencies and for a list of popular digital currencies type /dcurrencies. To convert a currency please write it in the following format: <from_currency code> <to_currency code> <money value>. For example: USD RUB 100")
 
 
 @bot.message_handler(commands=["pcurrencies"])
