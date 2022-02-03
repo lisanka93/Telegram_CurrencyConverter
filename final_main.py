@@ -5,9 +5,11 @@ from utils import *
 from keys import *
 
 
-bot = telebot.TeleBot(API_KEY)
+
 
 user_dict = {}   #needs to be replaced with redis database!
+
+bot = telebot.TeleBot(API_KEY)
 
 
 @bot.message_handler(commands=["start"])
@@ -79,12 +81,13 @@ def convert_currency(message):
         bot.send_message(message.chat.id, e)
     except Exception as e:
         if lang == "rus":
-            message = "Прошу прощения, но похоже сервер не работает 🥺"
-            bot.send_message(message.chat.id, message)
+            mes = "Прошу прощения, но похоже сервер не работает 🥺"
+            bot.send_message(message.chat.id, mes)
         else:
-            message = "I am sorry but it seems like the server is down 🥺"
-            bot.send_message(message.chat.id, message)
+            mes= "I am sorry but it seems like the server is down 🥺"
+            bot.send_message(message.chat.id, mes)
 
 
 print("bot is working...")
-bot.polling() #checking for new incoming messages
+
+#bot.polling() #checking for new incoming messages

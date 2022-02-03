@@ -1,4 +1,4 @@
-*************************** FOR SKILLFACTORY MENTOR ****************************
+****************************** FOR SKILLFACTORY MENTOR ****************************
 
 The bot is currently live on telegram! It is called @sf_cc_bot - check it out!
 
